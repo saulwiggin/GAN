@@ -6,99 +6,95 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.example.breakingbad_codetest.viewmodel.CharacterDetailViewModel" />
+                name="viewmodel"
+                type="com.saulwiggin.gan.viewmodel.DetailViewModel" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".SecondFragment">
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:contentPadding="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_margin="5dp"
-                android:textAlignment="center"
-                android:background="@drawable/textview_border"
-                android:text="@{viewModel.selectedProperty.name}"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Walter White" />
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/image"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="5dp"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.selectedProperty.img}"
-                app:layout_constraintDimensionRatio="h,4:5"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/iv_character"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_name"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/image">
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/tv_occupation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_character"
+                app:layout_constraintTop_toTopOf="@id/iv_character"
+                tools:text="Demo" />
 
-                <TextView
-                    android:id="@+id/status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{`Status : `+ viewModel.selectedProperty.status}"
-                    android:textColor="@color/grey"
-                    android:textSize="20sp"
-                    tools:text="Status" />
+            <TextView
+                android:id="@+id/tv_occupation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/tv_status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_character"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                tools:text="Demo" />
 
-                <TextView
-                    android:id="@+id/nickname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{`Nick name : `+ viewModel.selectedProperty.nickname}"
-                    android:textColor="@color/grey"
-                    android:textSize="20sp"
-                    tools:text="Nick name" />
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/tv_nick_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_character"
+                app:layout_constraintTop_toBottomOf="@id/tv_occupation"
+                tools:text="Demo" />
 
-                <TextView
-                    android:id="@+id/occupation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{`Occupations : `+ viewModel.selectedProperty.occupation.toString().replace(`[`, ``).replace(`]`,``.trim())}"
-                    android:textColor="@color/grey"
-                    android:textSize="20sp"
-                    tools:text="Occupation" />
+            <TextView
+                android:id="@+id/tv_nick_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/tv_season_appearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_character"
+                app:layout_constraintTop_toBottomOf="@id/tv_status"
+                tools:text="Demo" />
 
-                <TextView
-                    android:id="@+id/appearance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@{`Appeared in Seasons : `+ viewModel.selectedProperty.appearance.toString().replace(`[`, ``).replace(`]`,``.trim())}"
-                    android:textColor="@color/grey"
-                    android:textSize="20sp"
-                    tools:text="Appearance" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_season_appearance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_character"
+                app:layout_constraintTop_toBottomOf="@id/tv_nick_name"
+                tools:text="Demo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.cardview.widget.CardView>
 
 </layout>
